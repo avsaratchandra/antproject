@@ -1,0 +1,50 @@
+id: 3-1.0-7.r7/0
+type: dir
+pred: 3-1.0.r6/253
+count: 4
+text: 6 174 57 122 2700ea6708b8bfc55ac09a299e8abc74
+cpath: /tags/patch1
+copyfrom: 6 /trunk
+
+PLAIN
+K 6
+patch1
+V 16
+dir 3-1.0-7.r7/0
+END
+ENDREP
+id: 2-1.0.r7/197
+type: dir
+pred: 2-1.0.r1/66
+count: 1
+text: 7 147 37 37 bbceef1eaab6c4db5781114e61381b99
+cpath: /tags
+copyroot: 0 /
+
+PLAIN
+K 8
+branches
+V 16
+dir 0-1.0.r5/535
+K 4
+tags
+V 16
+dir 2-1.0.r7/197
+K 5
+trunk
+V 16
+dir 3-1.0.r6/253
+END
+ENDREP
+id: 0.0.r7/445
+type: dir
+pred: 0.0.r6/433
+count: 7
+text: 7 330 102 102 c644e59a96795593fdc1e966e8f35092
+cpath: /
+copyroot: 0 /
+
+3-1._0.t6-6 add-dir false false /tags/patch1
+6 /trunk
+
+445 573

@@ -1,0 +1,101 @@
+<!--patch build.xml file -->
+<project name="myproj" default="all">
+<taskdef name="jarpatch" classname="org.jarpatch.JarPatchTask"/>
+<taskdef name="switch" classname="ise.antelope.tasks.SwitchTask"/>
+<taskdef name="zipdiff" classname="zipdiff.ant.ZipDiffTask"/>
+
+<property name="old_war" value=""/>
+<property name="version" value=""/>
+
+<target name="update_source">
+<exec executable="svn">
+    <arg value="update"/>
+    <arg value="D:\android\android_LATEST"/>
+</exec>
+<ant antfile="Build.xml" dir="D:/android/android_LATEST" target="compile,war"/>
+<copy file="G:/output/android.war" tofile="./war_sources/new.war"/>
+</target>
+
+<target name="update_source_ONLY_WAR">
+<exec executable="svn">
+    <arg value="update"/>
+    <arg value="D:\android\android_LATEST"/>
+</exec>
+<ant antfile="Build.xml" dir="D:/android/android_LATEST" target="war"/>
+<copy file="D:/android/war_directory/android.war" tofile="./war_sources/new.war"/>
+</target>
+
+<target name="create_resources">
+<mkdir dir="./${version}"/>
+<mkdir dir="./war_sources"/>
+<copy file="D:/android/android_TAGS_BACKUP/${old_war}.war" tofile="./war_sources/old.war"/>
+</target>
+
+<target name="clean_resources">
+<delete dir="./war_sources"/>
+<delete dir="./${version}"/>
+</target>
+
+<target name="war_ite">
+<delete file="./war_sources/old.war"/>
+<move file="./war_sources/new.war" tofile="./war_sources/old.war"/>
+</target>
+
+<target name="zip_work">
+	<unzip src=".\${version}\${version}.zip" overwrite="true" 
+	dest=".\BACKS\${version}\test"/>
+	<zip destfile=".\Final\${version}.zip" basedir=".\BACKS\${version}\test\"/>
+</target>
+<!--<target name="selection" depends="clean_resources,create_resources,update_source,war_diff">-->
+<target name="selection" >
+<input validargs="1,2,3" 
+message=" 1.FIRST TIME PATCH  2.WARFILE_WITH_OUT_COMPILE  
+3.EXIT  PLEASE SELECT ${line.separator}" 
+addproperty="svn.patch.Ite" />
+
+<switch name="svn.patch.Ite">
+    <case value="1">
+        <echo>Executing 1</echo>
+        <echo>You are selected **First Time patch** option......</echo>
+		<antcall target="clean_resources"/>
+		<antcall target="create_resources"/>
+		<antcall target="update_source"/>
+		<antcall target="war_diff"/>
+		<copy file="./${version}/${version}.zip" tofile="./BACKS/${version}/${version}.zip"/>
+		<break/>
+    </case>
+	<case value="2">
+        <echo>Executing 2</echo>
+		<echo>You are selected **Iteration Patch_ONLY_WAR_WITH_OUT_COMPILE** option......</echo>
+		<!--<move file="./${version}/${version}.zip" tofile="./BACKS/${version}/${version}.zip"/>
+		<antcall target="war_ite"/>-->
+		<antcall target="update_source_ONLY_WAR"/>
+		<antcall target="war_diff"/>
+		<break/>
+    </case>
+    <case value="3">
+        <echo>Executing default case</echo>
+        <break/>
+    </case>
+</switch>
+
+</target>
+
+<target name="all" depends="selection">
+
+</target>
+
+<target name="war_diff" >
+<jarpatch newJar="./war_sources/new.war" oldjar="./war_sources/old.war" 
+resultPatch="./${version}/${version}.zip" excludes="build.xml,.classpath,*/web.xml" 
+logDeleteFile="false"/>
+</target>
+<!--<target name="Generate_Changed_Files_List">
+<zipdiff filename1="./war_sources/old.war" 
+    filename2="./war_sources/new.war"
+    ignoreTimestamps="true"
+    compareCRCValues="true"
+    destfile="./${version}/${version}.xml">
+</zipdiff>
+</target>-->
+</project>

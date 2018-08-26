@@ -1,0 +1,25 @@
+<project name="banking" >
+
+<echo message="welcome to banking" />
+<property name="release" value="13.2" />
+<echo message="release value is ${release}" />
+
+<target name="savings" >
+<echo message="welcome to savings"/>
+<property name="patch" value="10" />
+<echo message="patch value is : ${patch}" />
+</target>
+
+<target name="loans" depends="savings">
+<echo message="welcome to loans"/>
+<property name="patch" value="20" />
+<echo message="patch value is : ${patch}" />
+</target>
+
+<target name="creditcard" >
+<echo message="welcome to creditcard"/>
+</target>
+
+<echo message="welcome to banking end" />
+
+</project>

@@ -1,0 +1,54 @@
+id: 3-1.0-8.r8/0
+type: dir
+pred: 3-1.0-7.r7/0
+count: 5
+text: 6 174 57 122 2700ea6708b8bfc55ac09a299e8abc74
+cpath: /branches/patch1-issue
+copyfrom: 7 /tags/patch1
+
+PLAIN
+K 11
+enhancement
+V 18
+dir 3-1.0-3.r5/292
+K 12
+patch1-issue
+V 16
+dir 3-1.0-8.r8/0
+END
+ENDREP
+id: 0-1.0.r8/261
+type: dir
+pred: 0-1.0.r5/535
+count: 3
+text: 8 163 85 85 7d4c23ba68cb7fdd1cb76d34e3f42f82
+cpath: /branches
+copyroot: 0 /
+
+PLAIN
+K 8
+branches
+V 16
+dir 0-1.0.r8/261
+K 4
+tags
+V 16
+dir 2-1.0.r7/197
+K 5
+trunk
+V 16
+dir 3-1.0.r6/253
+END
+ENDREP
+id: 0.0.r8/514
+type: dir
+pred: 0.0.r7/445
+count: 8
+text: 8 399 102 102 8fa76d6db052a4fc56259b9f8ce01490
+cpath: /
+copyroot: 0 /
+
+3-1._0.t7-7 add-dir false false /branches/patch1-issue
+7 /tags/patch1
+
+514 642

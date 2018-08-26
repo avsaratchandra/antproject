@@ -1,0 +1,52 @@
+<!--tag build.xml file -->
+<project name="myproj" basedir="." default="all">
+<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpath="svnant.jar" />
+<property name="svn.base.url" value="https://152.138.1.68:8000/svn/android/trunk/"/>
+
+<svnSetting
+          svnkit="false"
+          username="chandu"
+          password="narendra"
+	      javahl="false"
+	      failonerror="true"
+          id="svn.settings"/>
+		  
+<target name="resource_names">
+
+<input message="Please Enter the Tag Name" addproperty="svn.tag.name" />
+<!--<property name="svn.tag.name" value="" />-->
+<!--<property name="svn.tag.name" value=""/>-->
+<echo message="${svn.tag.name}"/>
+
+<echo message="Ex:90,91,92......."/>
+
+<input message="Please Enter Current Patch Number" addproperty="patch.no" />
+<echo message="${patch.no}"/>
+
+</target>
+
+
+<target name="new_tag" depends="resource_names">
+
+<svn refid="svn.settings">
+<copy srcurl="${svn.base.url}" 
+desturl="https://152.138.1.68:8000/svn/android/tags/${svn.tag.name}"
+ message="adding the tag for ${patch.no} patch" />
+</svn>
+
+<echo message="... tagging completed." />
+</target>
+
+<!---->
+
+<target name="create_tag_war" depends="new_tag">
+<copy file="G:/output/android.war" 
+tofile="D:/android/war_directory_BACKUP/${svn.tag.name}.war"/>
+<echo message="... backup of war file completed."/>
+</target>
+
+<target name="all" depends="create_tag_war">
+
+</target>
+
+</project>

@@ -1,0 +1,50 @@
+id: 3-1.0-3.r3/0
+type: dir
+pred: 3-1.0.r2/467
+count: 2
+text: 2 360 94 81 64aec0badc2185fa790ebc3179469261
+cpath: /branches/enhancement
+copyfrom: 2 /trunk
+
+PLAIN
+K 11
+enhancement
+V 16
+dir 3-1.0-3.r3/0
+END
+ENDREP
+id: 0-1.0.r3/211
+type: dir
+pred: 0-1.0.r1/0
+count: 1
+text: 3 155 43 43 3889ab9f97e61e874674a08f98785039
+cpath: /branches
+copyroot: 0 /
+
+PLAIN
+K 8
+branches
+V 16
+dir 0-1.0.r3/211
+K 4
+tags
+V 15
+dir 2-1.0.r1/66
+K 5
+trunk
+V 16
+dir 3-1.0.r2/467
+END
+ENDREP
+id: 0.0.r3/461
+type: dir
+pred: 0.0.r2/646
+count: 3
+text: 3 347 101 101 78ff1173acecd3d3f2158b40de56c140
+cpath: /
+copyroot: 0 /
+
+3-1._0.t2-2 add-dir false false /branches/enhancement
+2 /trunk
+
+461 589

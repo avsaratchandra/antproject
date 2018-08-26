@@ -1,0 +1,16 @@
+<project name="banking" default="savings">
+
+<echo message="welcome to banking" />
+
+<property name="patch" value="10" />
+<echo message="patch value is ${patch}" />
+
+<property name="release" value="1.0" />
+<echo message="release value is ${release}" />
+
+<target name="savings">
+<echo message="welcome to savings section"/>
+<echo message="patch value is ${patch}" />
+</target>
+
+</project>
